@@ -21,7 +21,7 @@ public class CategoryController {
     AdvertismentRepository advertismentRepository;
 
     @GetMapping("/findAdsByCategory/{id}")
-    public String delete(@PathVariable("id") int id, ModelMap modelMap) {
+    public String findAdsByCategory(@PathVariable("id") int id, ModelMap modelMap) {
         List<Category> categories = categoryRepository.findAll();
         modelMap.addAttribute("categories", categories);
         List<Advertisment> ads = advertismentRepository.findAdvertismentsByCategory_Id(id);
