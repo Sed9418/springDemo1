@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+
+<br/>
+<br/>
+<div style="display:flex; flex-direction: column">
+    <h1>Categories:</h1>
+    <div style="width:30%;height:100%;display: flex; flex-direction: row;justify-content: space-around">
+        <table>
+            <tr><a th:text="All" th:href="@{'/home'}"></a></tr>
+            <tr th:each="categ : ${categories}">
+                <a th:href="@{'/cat/findAdsByCategory/' + ${categ.id}}" th:text="${categ.name}"></a>
+            </tr>
+        </table>
+    </div>
+    <div style="width:70%;display: flex; flex-direction: column;justify-content: space-around">
+        <h2> All Ads:</h2>
+        <table>
+            <div th:each="ad : ${ads}" style="border-top:black 1px solid; display: flex;flex-direction: row">
+                <div>
+                    <h1 th:text="${ad.title}"></h1>
+                    Description: <span th:text="${ad.description}"></span><br/>
+                    Price: <span th:text="${ad.price}"></span><br/>
+                    Date: <span th:text="${ad.date}"></span><br/>
+                    Category: <span th:text="${ad.category.name}"></span><br/>
+                </div>
+                <img style="width:100px"  th:src="@{'/advertisment/adImage?'(picUrl=${ad.picUrl})} "/>
+                <div>
+                </div>
+            </div>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
